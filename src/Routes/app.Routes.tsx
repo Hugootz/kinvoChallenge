@@ -1,13 +1,13 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import { Challenge } from "../screens/challenge";
+import { Desafio } from "../screens/Desafio";
 
 const Stack = createStackNavigator();
 
 export function ChallengeStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Challenge" component={Challenge} />
+      <Stack.Screen name="Desafio" component={Desafio} />
     </Stack.Navigator>
   );
 }
