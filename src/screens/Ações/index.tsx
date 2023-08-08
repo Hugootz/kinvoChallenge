@@ -1,10 +1,11 @@
 import React from "react";
-import { Container, Title } from "./styles";
+import { Container } from "./styles";
+import { CardAções } from "../../Components/CardAções";
 
 export function Ações() {
   return (
     <Container>
-      <Title>AÇÕES</Title>
+      <CardAções />
     </Container>
   );
 }
