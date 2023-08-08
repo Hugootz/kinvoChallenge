@@ -1,15 +1,28 @@
 import React from "react";
-import { Container, Title } from "./styles";
-import { InitialCard } from "../../Components/InitialCards";
+import { Container } from "./styles";
+import { InitialCard } from "../../Components/CardInicial";
 
-export function Desafio() {
+export function Desafio({ navigation }) {
   return (
     <Container>
-      <Title>Desafio</Title>
-
-      <InitialCard first="Ações" second="Nacionais" Icon={"linechart"} />
-      <InitialCard first="Fundos" second="De investimentos" Icon={"wallet"} />
-      <InitialCard first="Previdências" second="Privadas" Icon={"Safety"} />
+      <InitialCard
+        onPress={() => navigation.navigate("Ações")}
+        name="Ações"
+        surname="Nacionais"
+        icon={"linechart"}
+      />
+      <InitialCard
+        onPress={() => navigation.navigate("Fundos")}
+        name="Fundos"
+        surname="De investimentos"
+        icon={"wallet"}
+      />
+      <InitialCard
+        onPress={() => navigation.navigate("Previdência")}
+        name="Previdências"
+        surname="Privadas"
+        icon={"Safety"}
+      />
     </Container>
   );
 }
