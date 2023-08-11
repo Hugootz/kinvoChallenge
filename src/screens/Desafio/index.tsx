@@ -6,7 +6,7 @@ export function Desafio({ navigation }) {
   return (
     <Container>
       <InitialCard
-        onPress={() => navigation.navigate("Ações")}
+        onPress={() => navigation.navigate("Acoes")}
         name="Ações"
         surname="Nacionais"
         icon={"linechart"}
@@ -18,7 +18,7 @@ export function Desafio({ navigation }) {
         icon={"wallet"}
       />
       <InitialCard
-        onPress={() => navigation.navigate("Previdência")}
+        onPress={() => navigation.navigate("Previdencia")}
         name="Previdências"
         surname="Privadas"
         icon={"Safety"}
