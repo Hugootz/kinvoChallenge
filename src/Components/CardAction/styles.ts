@@ -1,32 +1,49 @@
+import { TouchableOpacity } from "react-native";
 import styled from "styled-components/native";
 import { RFValue } from "react-native-responsive-fontsize";
-
+import { AntDesign } from "@expo/vector-icons";
 export const Container = styled.View`
   flex: 1;
   align-items: center;
   justify-content: center;
+  padding: 10px;
 `;
 export const Details = styled.View`
-  width: 200px;
+  width: 300px;
+  height: 150px;
   background-color: ${({ theme }) => theme.colors.light};
+  border-radius: ${RFValue(5)}px;
 `;
-export const Id = styled.Text`
-  color: ${({ theme }) => theme.colors.dark};
-  font-size: ${RFValue(13)}px;
+export const AgroupTitle = styled.View`
+  padding-left: 7px;
+  padding-top: 5px;
 `;
 export const Name = styled.Text`
   color: ${({ theme }) => theme.colors.dark};
-  font-size: ${RFValue(13)}px;
+  font-size: ${RFValue(15)}px;
+  font-weight: bold;
 `;
 export const Ticker = styled.Text`
   color: ${({ theme }) => theme.colors.dark};
-  font-size: ${RFValue(13)}px;
+  font-size: ${RFValue(12)}px;
+`;
+export const WrapperDetails = styled.View`
+  align-items: flex-end;
+  padding-right: 7px;
+`;
+export const Button = styled.TouchableOpacity``;
+export const Icon = styled(AntDesign)`
+  color: ${({ theme }) => theme.colors.dark};
+  font-size: ${RFValue(20)}px;
+  bottom: 40px;
 `;
 export const MinimumValue = styled.Text`
   color: ${({ theme }) => theme.colors.dark};
   font-size: ${RFValue(13)}px;
+  top: 20px;
 `;
 export const Profitability = styled.Text`
   color: ${({ theme }) => theme.colors.dark};
   font-size: ${RFValue(13)}px;
+  top: 20px;
 `;
