@@ -3,10 +3,13 @@ import {
   Container,
   Name,
   Ticker,
-  Id,
   MinimumValue,
   Profitability,
   Details,
+  WrapperDetails,
+  Icon,
+  Button,
+  AgroupTitle,
 } from "./styles";
 import { ResponseApi } from "../../@types/api";
 
@@ -15,14 +18,20 @@ interface Props {
 }
 
 export function CardAction({ data }: Props) {
-  console.log(data);
   return (
     <Container>
       <Details>
-        <Name>{data.name}</Name>
-        <Ticker>{data.ticker}</Ticker>
-        <MinimumValue>{data.minimumValue}</MinimumValue>
-        <Profitability>{data.profitability}</Profitability>
+        <AgroupTitle>
+          <Name>{data.name}</Name>
+          <Ticker>{data.ticker}</Ticker>
+        </AgroupTitle>
+        <WrapperDetails>
+          <Button>
+            <Icon name={"hearto"} />
+          </Button>
+          <MinimumValue>{data.minimumValue}</MinimumValue>
+          <Profitability>{data.profitability}</Profitability>
+        </WrapperDetails>
       </Details>
     </Container>
   );
