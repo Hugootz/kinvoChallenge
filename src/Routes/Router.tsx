@@ -1,7 +1,7 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { Desafio } from "../screens/Desafio";
-import { Acoes } from "../screens/Acoes";
+import { Acoes } from "../screens/Ações";
 import { Previdencia } from "../screens/Previdencia";
 import { Fundos } from "../screens/Fundos";
 
