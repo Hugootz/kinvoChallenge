@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Name,
@@ -7,17 +7,26 @@ import {
   Profitability,
   Details,
   WrapperDetails,
-  Icon,
+  IconOutline,
   Button,
   AgroupTitle,
 } from "./styles";
-import { ResponseApi } from "../../@types/api";
+import { ResponseApiAcoes } from "../../@types/api";
 
 interface Props {
-  data: ResponseApi;
+  data: ResponseApiAcoes;
 }
 
 export function CardAction({ data }: Props) {
+  const [iconState, setIconState] = useState<any>("hearto");
+  function iconPress() {
+    if (iconState === "hearto") {
+      setIconState("heart");
+    }
+    if (iconState === "heart") {
+      setIconState("hearto");
+    }
+  }
   return (
     <Container>
       <Details>
@@ -26,8 +35,8 @@ export function CardAction({ data }: Props) {
           <Ticker>{data.ticker}</Ticker>
         </AgroupTitle>
         <WrapperDetails>
-          <Button>
-            <Icon name={"hearto"} />
+          <Button onPress={() => iconPress()}>
+            <IconOutline name={iconState} />
           </Button>
           <MinimumValue>{data.minimumValue}</MinimumValue>
           <Profitability>{data.profitability}</Profitability>
