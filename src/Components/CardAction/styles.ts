@@ -12,14 +12,14 @@ export const Details = styled.View`
   width: 300px;
   height: 150px;
   background-color: ${({ theme }) => theme.colors.light};
-  border-radius: ${RFValue(5)}px;
+  border-radius: ${RFValue(7)}px;
 `;
 export const AgroupTitle = styled.View`
   padding-left: 7px;
   padding-top: 5px;
 `;
 export const Name = styled.Text`
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.purple_title};
   font-size: ${RFValue(15)}px;
   font-weight: bold;
 `;
@@ -29,12 +29,13 @@ export const Ticker = styled.Text`
 `;
 export const WrapperDetails = styled.View`
   align-items: flex-end;
-  padding-right: 7px;
+  right: 8px;
 `;
-export const Button = styled.TouchableOpacity``;
-export const Icon = styled(AntDesign)`
+export const Button = styled(TouchableOpacity)``;
+
+export const IconOutline = styled(AntDesign)`
   color: ${({ theme }) => theme.colors.dark};
-  font-size: ${RFValue(20)}px;
+  font-size: ${RFValue(22)}px;
   bottom: 40px;
 `;
 export const MinimumValue = styled.Text`
