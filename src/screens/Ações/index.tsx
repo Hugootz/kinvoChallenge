@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Container, ListCard } from "./styles";
 import { CardAction } from "../../Components/CardAction";
 import axios from "axios";
-import { ResponseApiAcoes } from "../../@types/api";
+import { ResponseApiAcoes } from "../../@types/typesApi";
 import { Load } from "../../Components/Load";
+import api from "../../services/api";
 
 export function Acoes() {
   const [list, setList] = useState<ResponseApiAcoes[]>([]);
@@ -11,9 +12,7 @@ export function Acoes() {
 
   async function getApi() {
     try {
-      const response = await axios.get(
-        "https://6266f62263e0f382568936e4.mockapi.io/stocks"
-      );
+      const response = await api.get("/stocks");
       setList(
         response.data.data.sort((a, b) =>
           a.name > b.name ? 1 : b.name > a.name ? -1 : 0
