@@ -12,7 +12,7 @@ export const Details = styled.View`
   width: 300px;
   height: 150px;
   background-color: ${({ theme }) => theme.colors.light};
-  border-radius: ${RFValue(7)}px;
+  border-radius: 7px;
 `;
 export const AgroupTitle = styled.View`
   padding-left: 7px;
