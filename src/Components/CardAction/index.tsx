@@ -11,7 +11,7 @@ import {
   Button,
   AgroupTitle,
 } from "./styles";
-import { ResponseApiAcoes } from "../../@types/api";
+import { ResponseApiAcoes } from "../../@types/typesApi";
 
 interface Props {
   data: ResponseApiAcoes;
