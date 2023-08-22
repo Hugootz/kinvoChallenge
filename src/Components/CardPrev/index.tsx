@@ -4,23 +4,32 @@ import {
   Details,
   AgroupTitle,
   Name,
-  Ticker,
+  Type,
   WrapperDetails,
   MinimumValue,
+  Tax,
+  RedemptionTerm,
   Profitability,
 } from "./styles";
+import { ResponseApiPrev } from "../../@types/typesApi";
 
-export function CardPrev({ data }) {
+interface PropsPrev {
+  dataPrev: ResponseApiPrev;
+}
+
+export function CardPrev({ dataPrev }: PropsPrev) {
   return (
     <Container>
       <Details>
         <AgroupTitle>
-          <Name>{data}</Name>
-          <Ticker>{data}</Ticker>
+          <Name>{dataPrev.name}</Name>
+          <Type>{dataPrev.type}</Type>
         </AgroupTitle>
         <WrapperDetails>
-          <MinimumValue>{data}</MinimumValue>
-          <Profitability>{data}</Profitability>
+          <MinimumValue>{dataPrev.minimumValue}</MinimumValue>
+          <Tax>{dataPrev.tax}</Tax>
+          <RedemptionTerm>{dataPrev.redemptionTerm}</RedemptionTerm>
+          <Profitability>{dataPrev.profitability}</Profitability>
         </WrapperDetails>
       </Details>
     </Container>
