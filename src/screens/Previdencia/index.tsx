@@ -1,15 +1,10 @@
 import React, { useState, useEffect } from "react";
-import {
-  Container,
-  DetailsStyle,
-  ButtonWrapper,
-  Filter,
-  ListPrev,
-} from "./styles";
+import { Container, WrapperStyle, ListPrev } from "./styles";
 import { ResponseApiPrev } from "../../@types/typesApi";
 import { CardPrev } from "../../Components/CardPrev";
 import { Load } from "../../Components/Load";
 import api from "../../services/api";
+import { ButtonFilter } from "../../Components/ButtonFilter";
 
 export function Previdencia() {
   const [prevList, setPrevList] = useState<ResponseApiPrev[]>([]);
@@ -30,12 +25,11 @@ export function Previdencia() {
   }, []);
   return (
     <Container>
-      <ButtonWrapper>
-        <DetailsStyle>
-          <Filter>SEM TAXA</Filter>
-        </DetailsStyle>
-      </ButtonWrapper>
-
+      <WrapperStyle>
+        <ButtonFilter name={"SEM TAXA"} />
+        <ButtonFilter name={"R$ 100,00"} />
+        <ButtonFilter name={"D+1"} />
+      </WrapperStyle>
       {loading ? (
         <Load />
       ) : (
