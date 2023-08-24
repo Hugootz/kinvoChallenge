@@ -15,6 +15,7 @@ export const AgroupTitle = styled.View`
 `;
 export const Name = styled.Text`
   font-weight: bold;
+  color: ${({ theme }) => theme.colors.purple_title};
 `;
 export const Type = styled.Text``;
 export const WrapperDetails = styled.View`
