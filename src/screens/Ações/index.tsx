@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Container, ListCard } from "./styles";
 import { CardAction } from "../../Components/CardAction";
-import axios from "axios";
 import { ResponseApiAcoes } from "../../@types/typesApi";
 import { Load } from "../../Components/Load";
 import api from "../../services/api";
 
-export function Acoes() {
+export function Ações() {
   const [list, setList] = useState<ResponseApiAcoes[]>([]);
   const [loading, setLoading] = useState(true);
 
