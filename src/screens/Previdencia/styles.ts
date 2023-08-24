@@ -6,19 +6,9 @@ export const Container = styled.View`
   justify-content: center;
   align-items: center;
 `;
-export const DetailsStyle = styled.View`
-  width: 100px;
-  height: 40px;
-  background-color: ${({ theme }) => theme.colors.light};
-  top: 15px;
+export const WrapperStyle = styled.View`
   flex-direction: row;
-  border-radius: 17px;
   margin-bottom: 30px;
-`;
-export const ButtonWrapper = styled(TouchableOpacity)``;
-export const Filter = styled.Text`
-  padding: 10px;
-  left: 4px;
 `;
 
 export const ListPrev = styled(FlatList).attrs({
