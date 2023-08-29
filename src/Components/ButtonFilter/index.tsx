@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, ButtonWrapper, DetailsStyle, Filter } from "./styles";
+import {} from "../../../src/@types/typesApi";
 
-export function ButtonFilter({ name }) {
+interface ButtonFilterProps {
+  name: string;
+  onPress?: () => void;
+}
+
+export function ButtonFilter({ name, onPress }: ButtonFilterProps) {
   return (
     <Container>
-      <ButtonWrapper>
+      <ButtonWrapper onPress={onPress}>
         <DetailsStyle>
           <Filter>{name}</Filter>
         </DetailsStyle>
