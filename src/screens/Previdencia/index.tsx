@@ -8,16 +8,39 @@ import { ButtonFilter } from "../../Components/ButtonFilter";
 
 export function Previdencia() {
   const [prevList, setPrevList] = useState<ResponseApiPrev[]>([]);
-  const [loading, setLoading] = useState(true);
+
+  const [loadingPrev, setLoadingPrev] = useState(true);
   async function getApiPrev() {
     try {
       const responsePrev = await api.get("/pension");
+
       setPrevList(responsePrev.data.data);
     } catch (error) {
       console.log(error);
     } finally {
-      setLoading(false);
+      setLoadingPrev(false);
     }
+  }
+  function filterTax() {
+    setPrevList(
+      prevList.filter((item) => {
+        return item.tax === 0;
+      })
+    );
+  }
+  function filterMinimumValue() {
+    setPrevList(
+      prevList.filter((item) => {
+        return item.minimumValue === 100;
+      })
+    );
+  }
+  function filterRedemptionTerm() {
+    setPrevList(
+      prevList.filter((item) => {
+        return item.redemptionTerm === 1;
+      })
+    );
   }
 
   useEffect(() => {
@@ -26,11 +49,12 @@ export function Previdencia() {
   return (
     <Container>
       <WrapperStyle>
-        <ButtonFilter name={"SEM TAXA"} />
-        <ButtonFilter name={"R$ 100,00"} />
-        <ButtonFilter name={"D+1"} />
+        <ButtonFilter onPress={() => filterTax()} name={"SEM TAXA"} />
+
+        <ButtonFilter onPress={() => filterMinimumValue()} name={"R$ 100,00"} />
+        <ButtonFilter onPress={() => filterRedemptionTerm()} name={"D+1"} />
       </WrapperStyle>
-      {loading ? (
+      {loadingPrev ? (
         <Load />
       ) : (
         <ListPrev
