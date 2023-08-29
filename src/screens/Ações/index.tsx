@@ -7,20 +7,20 @@ import api from "../../services/api";
 
 export function Ações() {
   const [list, setList] = useState<ResponseApiAcoes[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loadingAcoes, setLoadingAcoes] = useState(true);
 
   async function getApi() {
     try {
-      const response = await api.get("/stocks");
+      const responseA = await api.get("/stocks");
       setList(
-        response.data.data.sort((a, b) =>
+        responseA.data.data.sort((a, b) =>
           a.name > b.name ? 1 : b.name > a.name ? -1 : 0
         )
       );
     } catch (error) {
       console.log(error);
     } finally {
-      setLoading(false);
+      setLoadingAcoes(false);
     }
   }
   useEffect(() => {
@@ -29,7 +29,7 @@ export function Ações() {
 
   return (
     <Container>
-      {loading ? (
+      {loadingAcoes ? (
         <Load />
       ) : (
         <ListCard
