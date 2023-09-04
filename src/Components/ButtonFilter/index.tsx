@@ -3,7 +3,7 @@ import { Container, ButtonWrapper, DetailsStyle, Filter } from "./styles";
 
 interface ButtonFilterProps {
   name: string;
-  onPress?: () => void;
+  onPress: () => void;
 }
 
 export function ButtonFilter({ name, onPress }: ButtonFilterProps) {
