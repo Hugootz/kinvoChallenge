@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Container, ButtonWrapper, DetailsStyle, Filter } from "./styles";
-import {} from "../../../src/@types/typesApi";
 
 interface ButtonFilterProps {
   name: string;
@@ -8,11 +7,13 @@ interface ButtonFilterProps {
 }
 
 export function ButtonFilter({ name, onPress }: ButtonFilterProps) {
+  const [activeColor, setActiveColor] = useState(true);
+
   return (
     <Container>
       <ButtonWrapper onPress={onPress}>
-        <DetailsStyle>
-          <Filter>{name}</Filter>
+        <DetailsStyle activeTheme={activeColor}>
+          <Filter activeTheme={activeColor}>{name}</Filter>
         </DetailsStyle>
       </ButtonWrapper>
     </Container>
