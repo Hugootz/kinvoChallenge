@@ -11,7 +11,7 @@ export function Previdencia() {
   const [list, setList] = useState<ResponseApiPrev[]>([]);
   const [loadingPrev, setLoadingPrev] = useState(true);
   const [initialList, setInitialList] = useState<ResponseApiPrev[]>([]);
-  const [activeFunction, setActiveFunction] = useState(true);
+  const [filter, setFilter] = useState(null);
   async function getApiPrev() {
     try {
       const responsePrev = await api.get("/pension");
@@ -23,18 +23,29 @@ export function Previdencia() {
       setLoadingPrev(false);
     }
   }
-
-  function filterTax() {
-    activeFunction
-      ? setList(initialList.filter((item) => item.tax === 0))
-      : setList(initialList);
+  function selectFilter(selectedFilter) {
+    setFilter((prevFilter) => {
+      if (prevFilter === selectedFilter) {
+        return null;
+      } else {
+        return selectedFilter;
+      }
+    });
   }
-  function filterMinimumValue() {
-    setList(initialList.filter((item) => item.minimumValue <= 100));
-  }
-  function filterRedemptionTerm() {
-    setList(initialList.filter((item) => item.redemptionTerm === 1));
-  }
+  useEffect(() => {
+    switch (filter) {
+      case null:
+        return setList(initialList);
+      case "tax":
+        return setList(initialList.filter((item) => item.tax === 0));
+      case "minimunValue":
+        return setList(initialList.filter((item) => item.minimumValue <= 100));
+      case "term":
+        return setList(initialList.filter((item) => item.redemptionTerm === 1));
+      default:
+        break;
+    }
+  }, [filter]);
 
   useEffect(() => {
     getApiPrev();
@@ -42,10 +53,13 @@ export function Previdencia() {
   return (
     <Container>
       <WrapperStyle>
-        <ButtonFilter onPress={() => filterTax()} name={"SEM TAXA"} />
+        <ButtonFilter onPress={() => selectFilter("tax")} name={"SEM TAXA"} />
 
-        <ButtonFilter onPress={() => filterMinimumValue()} name={"R$ 100,00"} />
-        <ButtonFilter onPress={() => filterRedemptionTerm()} name={"D+1"} />
+        <ButtonFilter
+          onPress={() => selectFilter("minimunValue")}
+          name={"R$ 100,00"}
+        />
+        <ButtonFilter onPress={() => selectFilter("term")} name={"D+1"} />
       </WrapperStyle>
       {loadingPrev ? (
         <Load />
