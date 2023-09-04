@@ -5,42 +5,35 @@ import { CardPrev } from "../../Components/CardPrev";
 import { Load } from "../../Components/Load";
 import api from "../../services/api";
 import { ButtonFilter } from "../../Components/ButtonFilter";
+import { ErrorScreen } from "../../Components/ErrorScreen";
 
 export function Previdencia() {
-  const [prevList, setPrevList] = useState<ResponseApiPrev[]>([]);
-
+  const [list, setList] = useState<ResponseApiPrev[]>([]);
   const [loadingPrev, setLoadingPrev] = useState(true);
+  const [initialList, setInitialList] = useState<ResponseApiPrev[]>([]);
+  const [activeFunction, setActiveFunction] = useState(true);
   async function getApiPrev() {
     try {
       const responsePrev = await api.get("/pension");
-
-      setPrevList(responsePrev.data.data);
+      setList(responsePrev.data.data);
+      setInitialList(responsePrev.data.data);
     } catch (error) {
       console.log(error);
     } finally {
       setLoadingPrev(false);
     }
   }
+
   function filterTax() {
-    setPrevList(
-      prevList.filter((item) => {
-        return item.tax === 0;
-      })
-    );
+    activeFunction
+      ? setList(initialList.filter((item) => item.tax === 0))
+      : setList(initialList);
   }
   function filterMinimumValue() {
-    setPrevList(
-      prevList.filter((item) => {
-        return item.minimumValue === 100;
-      })
-    );
+    setList(initialList.filter((item) => item.minimumValue <= 100));
   }
   function filterRedemptionTerm() {
-    setPrevList(
-      prevList.filter((item) => {
-        return item.redemptionTerm === 1;
-      })
-    );
+    setList(initialList.filter((item) => item.redemptionTerm === 1));
   }
 
   useEffect(() => {
@@ -59,7 +52,7 @@ export function Previdencia() {
       ) : (
         <ListPrev
           showsVerticalScrollIndicator={false}
-          data={prevList}
+          data={list}
           keyExtractor={(item) => String(item.id)}
           renderItem={({ item }) => <CardPrev dataPrev={item} />}
         />
