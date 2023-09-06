@@ -6,6 +6,7 @@ export const Container = styled.View`
   flex: 1;
   justify-content: center;
   align-items: center;
+  top: 70px;
 `;
 export const Title = styled.Text`
   font-weight: bold;
