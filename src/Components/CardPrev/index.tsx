@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Container,
   Details,
@@ -10,6 +10,11 @@ import {
   Tax,
   RedemptionTerm,
   Profitability,
+  ValorMinimo,
+  Taxa,
+  Resgate,
+  Rentabilidade,
+  WrapperName,
 } from "./styles";
 import { ResponseApiPrev } from "../../@types/typesApi";
 
@@ -25,11 +30,17 @@ export function CardPrev({ dataPrev }: PropsPrev) {
           <Name>{dataPrev.name}</Name>
           <Type>{dataPrev.type}</Type>
         </AgroupTitle>
+        <WrapperName>
+          <ValorMinimo>Valor mínimo:</ValorMinimo>
+          <Taxa>Taxa:</Taxa>
+          <Resgate>Resgate:</Resgate>
+          <Rentabilidade>Rentabilidade:</Rentabilidade>
+        </WrapperName>
         <WrapperDetails>
-          <MinimumValue>{dataPrev.minimumValue}</MinimumValue>
-          <Tax>{dataPrev.tax}</Tax>
-          <RedemptionTerm>{dataPrev.redemptionTerm}</RedemptionTerm>
-          <Profitability>{dataPrev.profitability}</Profitability>
+          <MinimumValue>{`R$${dataPrev.minimumValue},00`}</MinimumValue>
+          <Tax>{`${dataPrev.tax}%`}</Tax>
+          <RedemptionTerm>{`D+${dataPrev.redemptionTerm}`}</RedemptionTerm>
+          <Profitability>{`${dataPrev.profitability}%`}</Profitability>
         </WrapperDetails>
       </Details>
     </Container>
