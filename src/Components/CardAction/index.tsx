@@ -10,6 +10,8 @@ import {
   IconOutline,
   Button,
   AgroupTitle,
+  ValorMinimo,
+  Rentabilidade,
 } from "./styles";
 import { ResponseApiAcoes } from "../../@types/typesApi";
 
@@ -38,9 +40,11 @@ export function CardAction({ data }: Props) {
           <Button onPress={() => iconPress()}>
             <IconOutline name={iconState} />
           </Button>
-          <MinimumValue>{data.minimumValue}</MinimumValue>
-          <Profitability>{data.profitability}</Profitability>
+          <MinimumValue>{`R$${data.minimumValue}`}</MinimumValue>
+          <Profitability>{`${data.profitability}%`}</Profitability>
         </WrapperDetails>
+        <ValorMinimo>Valor mínimo:</ValorMinimo>
+        <Rentabilidade>Rentabilidade:</Rentabilidade>
       </Details>
     </Container>
   );
