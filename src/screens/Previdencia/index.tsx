@@ -5,7 +5,6 @@ import { CardPrev } from "../../Components/CardPrev";
 import { Load } from "../../Components/Load";
 import api from "../../services/api";
 import { ButtonFilter } from "../../Components/ButtonFilter";
-import { ErrorScreen } from "../../Components/ErrorScreen";
 
 export function Previdencia() {
   const [list, setList] = useState<ResponseApiPrev[]>([]);
@@ -38,6 +37,7 @@ export function Previdencia() {
         return setList(initialList);
       case "tax":
         return setList(initialList.filter((item) => item.tax === 0));
+
       case "minimunValue":
         return setList(initialList.filter((item) => item.minimumValue <= 100));
       case "term":
@@ -53,13 +53,22 @@ export function Previdencia() {
   return (
     <Container>
       <WrapperStyle>
-        <ButtonFilter onPress={() => selectFilter("tax")} name={"SEM TAXA"} />
+        <ButtonFilter
+          onPress={() => selectFilter("tax")}
+          name={"SEM TAXA"}
+          isActive={filter === "tax"}
+        />
 
         <ButtonFilter
           onPress={() => selectFilter("minimunValue")}
+          isActive={filter <= "minimunValue"}
           name={"R$ 100,00"}
         />
-        <ButtonFilter onPress={() => selectFilter("term")} name={"D+1"} />
+        <ButtonFilter
+          onPress={() => selectFilter("term")}
+          name={"D+1"}
+          isActive={filter === "term"}
+        />
       </WrapperStyle>
       {loadingPrev ? (
         <Load />
