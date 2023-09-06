@@ -9,7 +9,7 @@ export const Container = styled.View`
   padding: 10px;
 `;
 export const Details = styled.View`
-  width: 300px;
+  width: 350px;
   height: 150px;
   background-color: ${({ theme }) => theme.colors.light};
   border-radius: 7px;
@@ -38,13 +38,29 @@ export const IconOutline = styled(AntDesign)`
   font-size: ${RFValue(22)}px;
   bottom: 40px;
 `;
+export const ValorMinimo = styled.Text`
+  align-self: flex-start;
+  bottom: 35px;
+  left: 8px;
+  color: ${({ theme }) => theme.colors.gray_dark};
+  font-weight: bold;
+`;
+export const Rentabilidade = styled.Text`
+  align-self: flex-start;
+  bottom: 26px;
+  left: 8px;
+  color: ${({ theme }) => theme.colors.gray_dark};
+  font-weight: bold;
+`;
 export const MinimumValue = styled.Text`
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.gray_dark};
   font-size: ${RFValue(13)}px;
-  top: 20px;
+  top: 10px;
+  font-weight: bold;
 `;
 export const Profitability = styled.Text`
-  color: ${({ theme }) => theme.colors.dark};
+  color: ${({ theme }) => theme.colors.gray_dark};
   font-size: ${RFValue(13)}px;
-  top: 20px;
+  top: 15px;
+  font-weight: bold;
 `;
