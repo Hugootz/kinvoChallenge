@@ -1,19 +1,18 @@
 import React, { useState } from "react";
 import { Container, ButtonWrapper, DetailsStyle, Filter } from "./styles";
 
-interface ButtonFilterProps {
-  name: string;
-  onPress: () => void;
+export interface ButtonFilterProps {
+  name?: string;
+  onPress?: () => void;
+  isActive: boolean;
 }
 
-export function ButtonFilter({ name, onPress }: ButtonFilterProps) {
-  const [activeColor, setActiveColor] = useState(true);
-
+export function ButtonFilter({ name, onPress, isActive }: ButtonFilterProps) {
   return (
     <Container>
       <ButtonWrapper onPress={onPress}>
-        <DetailsStyle activeTheme={activeColor}>
-          <Filter activeTheme={activeColor}>{name}</Filter>
+        <DetailsStyle isActive={isActive}>
+          <Filter isActive={isActive}>{name}</Filter>
         </DetailsStyle>
       </ButtonWrapper>
     </Container>
