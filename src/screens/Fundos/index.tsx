@@ -13,8 +13,8 @@ export function Fundos() {
     }, 3000);
   }
 
-  // A API para tela de fundos não funcionou, então coloquei uma tela de erro para visualização do usúario
-  // E um botão para consultar se a tela irá carregar as informações!
+  // A API para tela de fundos não funcionou, então coloquei uma tela de erro para visualização do usúario!
+
   return (
     <Container>
       <ErrorScreen isLoading={loadingFunds} onPress={handleButtonPress} />
