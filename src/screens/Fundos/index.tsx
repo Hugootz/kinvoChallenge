@@ -17,29 +17,11 @@ export function Fundos() {
     }, 3000);
   }
 
-  async function getApi() {
-    try {
-      const responseF = await api.get("/funds");
-      setListFunds(responseF.data.data);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoadingFunds(false);
-    }
-  }
-  useEffect(() => {
-    getApi;
-  }, []);
-
+  // A API para tela de fundos não funcionou, então coloquei uma tela de erro para visualização do usúario
+  // E um botão para consultar se a tela irá carregar as informações!
   return (
     <Container>
       <ErrorScreen isLoading={loadingFunds} onPress={handleButtonPress} />
-
-      <ListFunds
-        data={listFunds}
-        keyExtractor={(item) => String(item.id)}
-        renderItem={({ item }) => <CardFundos fundos={item} />}
-      />
     </Container>
   );
 }
